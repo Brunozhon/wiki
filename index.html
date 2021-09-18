@@ -9,7 +9,11 @@
     <div id="wiki"></div>
     <script>
       var wikiElem = document.getElementById("wiki")
-      if (location.search == "?title=Main_Page") {} else {
+      if (location.search == "?title=Main_Page") {
+        fetch("Main_Page.html")
+          .then(response => response.text())
+          .then(body => wikiElem.innerHTML = body)
+      } else {
         wikiElem.innerHTML = "Wiki page can't be found."
       }
     </script>
