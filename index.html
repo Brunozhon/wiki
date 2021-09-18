@@ -9,10 +9,14 @@
     <div id="wiki"></div>
     <script>
       var wikiElem = document.getElementById("wiki")
+      function catchError(err) {
+        return "Network failure or anything preventing Fetch from completing the requests. <a href=\"https://github.com/github/fetch#caveats\">Learn more here.</a>"
+      }
       if (location.search == "?title=Main_Page") {
         fetch("Main_Page.html")
           .then(response => response.text())
           .then(body => wikiElem.innerHTML = body)
+          .catch(err => wikiElem.innerHTML = catchError(err))
       } else {
         wikiElem.innerHTML = "Wiki page can't be found."
       }
