@@ -17,6 +17,11 @@
           .then(response => response.text())
           .then(body => wikiElem.innerHTML = body)
           .catch(err => wikiElem.innerHTML = catchError(err))
+      } else if (location.search == "?title=Special:_What_is_and_is_not_BrunoWiki") {
+        fetch("special/What_is_and_is_not_BrunoWiki.html")
+          .then(response => response.text())
+          .then(body => wikiElem.innerHTML = body)
+          .catch(err => wikiElem.innerHTML = catchError(err))
       } else {
         wikiElem.innerHTML = "Wiki page can't be found."
       }
